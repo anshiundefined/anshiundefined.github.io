@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Meetanshi Gaba | Economics and Data</title>
+<meta name="description" content="Meetanshi Gaba, MSc Economics (Data Analytics) at Symbiosis School of Economics. Research and data projects on monetary policy, inequality and India.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f4f1ea; --ink:#16140f; --muted:#6f6a5e; --line:#d9d3c5; --accent:#b0325f; --card:#ece7dc;
+  --serif:"Instrument Serif",Georgia,serif; --sans:Inter,system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e0e0c;--ink:#ece8df;--muted:#8d887c;--line:#26241f;--accent:#ee7fa8;--card:#171613}}
+:root[data-theme="dark"]{--bg:#0e0e0c;--ink:#ece8df;--muted:#8d887c;--line:#26241f;--accent:#ee7fa8;--card:#171613}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;transition:background .4s,color .4s}
+a{color:inherit}
+::selection{background:var(--accent);color:var(--bg)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 28px}
+@media(max-width:600px){.wrap{padding:0 16px}}
+
+/* nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:20;backdrop-filter:blur(10px);background:color-mix(in srgb,var(--bg) 78%,transparent);border-bottom:1px solid transparent;transition:border-color .3s}
+nav.scrolled{border-color:var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+.mark{font-family:var(--mono);font-size:13px;letter-spacing:.02em;text-decoration:none}
+.mark b{color:var(--accent);font-weight:500}
+.links{display:flex;gap:26px;align-items:center;font-family:var(--mono);font-size:12.5px}
+.links a{text-decoration:none;color:var(--muted);transition:color .2s}
+.links a:hover{color:var(--ink)}
+#theme{background:none;border:1px solid var(--line);color:var(--ink);width:30px;height:30px;border-radius:50%;cursor:pointer;display:grid;place-items:center}
+#theme svg{width:14px;height:14px}
+@media(max-width:700px){.links a:not(.keep){display:none}}
+
+/* hero */
+.hero{min-height:100svh;display:grid;grid-template-columns:1.15fr .85fr;align-items:center;gap:40px;padding-top:60px}
+@media(max-width:860px){.hero{grid-template-columns:1fr;padding-top:100px;min-height:auto;padding-bottom:40px}}
+.eyebrow{font-family:var(--mono);font-size:12.5px;color:var(--muted);letter-spacing:.04em;display:flex;align-items:center;gap:10px}
+.eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 0 var(--accent);animation:pulse 2.4s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--accent) 60%,transparent)}70%{box-shadow:0 0 0 10px transparent}100%{box-shadow:0 0 0 0 transparent}}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(64px,11vw,148px);line-height:.88;letter-spacing:-.02em;margin:22px 0 28px}
+h1 em{color:var(--accent)}
+.lede{font-size:clamp(17px,1.6vw,20px);max-width:36ch;color:var(--ink)}
+.lede span{color:var(--muted)}
+.cta{display:flex;gap:12px;margin-top:34px;flex-wrap:wrap}
+.btn{font-family:var(--mono);font-size:13px;text-decoration:none;padding:11px 18px;border-radius:999px;border:1px solid var(--ink);transition:all .25s}
+.btn.solid{background:var(--ink);color:var(--bg)}
+.btn:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+.portrait{position:relative;aspect-ratio:1/1;width:100%;max-width:460px;justify-self:end}
+@media(max-width:860px){.portrait{justify-self:start;max-width:360px}}
+#field{width:100%;height:100%;display:block;cursor:crosshair}
+.portrait figcaption{position:absolute;bottom:-4px;left:0;font-family:var(--mono);font-size:11px;color:var(--muted)}
+
+/* sections */
+section{padding:110px 0 30px;scroll-margin-top:-40px}
+.hero{scroll-margin-top:0}
+.head{display:flex;align-items:baseline;justify-content:space-between;gap:20px;border-bottom:1px solid var(--line);padding-bottom:18px;margin-bottom:10px;flex-wrap:wrap}
+h2{font-family:var(--serif);font-weight:400;font-size:clamp(40px,5.5vw,64px);line-height:1;letter-spacing:-.01em}
+h2 sup{font-family:var(--mono);font-size:12px;color:var(--accent);vertical-align:top;margin-left:6px;letter-spacing:0}
+.note{font-family:var(--mono);font-size:12px;color:var(--muted)}
+
+/* filters */
+.filters{display:flex;gap:8px;flex-wrap:wrap}
+.filters button{font-family:var(--mono);font-size:12px;background:none;border:1px solid var(--line);color:var(--muted);padding:6px 12px;border-radius:999px;cursor:pointer;transition:all .2s}
+.filters button.on,.filters button:hover{border-color:var(--ink);color:var(--ink)}
+.filters button.on{background:var(--ink);color:var(--bg)}
+
+/* project rows */
+.proj{list-style:none}
+.proj li{border-bottom:1px solid var(--line);transition:opacity .35s, max-height .45s;overflow:hidden}
+.proj li.hide{opacity:0;max-height:0;border-color:transparent}
+.row{display:grid;grid-template-columns:54px 1fr 150px 30px;gap:18px;align-items:start;padding:24px 0;text-decoration:none;cursor:pointer;position:relative}
+.row .n{font-family:var(--mono);font-size:12px;color:var(--muted);padding-top:9px}
+.row h3{font-family:var(--serif);font-weight:400;font-size:clamp(26px,3vw,34px);line-height:1.1;transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+.row p.q{color:var(--muted);margin-top:6px;max-width:62ch;font-size:15px}
+.row .tags{font-family:var(--mono);font-size:11px;color:var(--muted);text-align:right;padding-top:10px;line-height:1.8}
+.row .arr{font-size:20px;padding-top:4px;transition:transform .35s;color:var(--muted)}
+.row:hover h3{transform:translateX(8px)}
+.row:hover .arr{transform:rotate(-45deg);color:var(--accent)}
+.row svg.spark{position:absolute;right:210px;top:26px;width:120px;height:40px;opacity:0;transition:opacity .35s}
+.row:hover svg.spark{opacity:1}
+.finding{display:grid;grid-template-columns:54px 1fr;gap:18px;max-height:0;overflow:hidden;transition:max-height .5s ease}
+.proj li.open .finding{max-height:420px}
+.finding .body{padding:0 0 26px;font-size:15px;max-width:72ch}
+.finding .body b{font-weight:600}
+.finding .k{font-family:var(--mono);font-size:11px;color:var(--accent);display:block;margin-bottom:6px;letter-spacing:.05em}
+.finding .m{font-family:var(--mono);font-size:12px;color:var(--muted);margin-top:10px}
+.finding a.gh{font-family:var(--mono);font-size:12px;margin-top:14px;display:inline-block;text-decoration:none;border-bottom:1px solid var(--accent)}
+.live{display:inline-block;font-family:var(--mono);font-size:10px;padding:2px 7px;border-radius:999px;border:1px solid var(--line);color:var(--muted);margin-left:8px;vertical-align:middle}
+.live.real{border-color:var(--accent);color:var(--accent)}
+@media(max-width:700px){.row{grid-template-columns:34px 1fr 20px}.row .tags,.row svg.spark{display:none}.finding{grid-template-columns:34px 1fr}}
+
+/* papers */
+.papers{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-top:20px}
+.paper{background:var(--bg);padding:26px;transition:background .3s}
+.paper:hover{background:var(--card)}
+.paper .yr{font-family:var(--mono);font-size:11px;color:var(--accent)}
+.paper h4{font-family:var(--serif);font-weight:400;font-size:24px;line-height:1.15;margin:10px 0}
+.paper p{font-size:14px;color:var(--muted)}
+.paper .meth{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:14px;display:block}
+
+/* cv */
+.cvblock{margin-top:56px}
+.cvblock h3{font-family:var(--mono);font-weight:400;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:12px;margin-bottom:6px}
+.cvblock h3::after{content:"";flex:1;height:1px;background:var(--line)}
+.cvblock h3 .ct{color:var(--muted)}
+.cv{display:grid;grid-template-columns:200px 1fr;gap:10px 40px;margin-top:18px}
+.cv dd .meta{font-family:var(--mono);font-size:11.5px;color:var(--muted);margin-top:2px}
+.cv dd a{text-decoration:none;border-bottom:1px solid var(--line)}
+.cv dd a:hover{border-color:var(--accent)}
+.cv dt{font-family:var(--mono);font-size:12px;color:var(--muted);padding-top:4px}
+.cv dd{padding-bottom:22px;border-bottom:1px solid var(--line);margin-bottom:4px}
+.cv dd strong{font-weight:500}
+.cv dd .where{color:var(--muted);font-size:14px}
+@media(max-width:700px){.cv{grid-template-columns:1fr}.cv dd{padding-bottom:16px}}
+.skills{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:26px;margin-top:30px}
+.skills h5{font-family:var(--mono);font-weight:400;font-size:11px;color:var(--accent);letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px}
+.skills p{font-size:14.5px;color:var(--ink)}
+
+/* contact */
+.contact{padding:140px 0 60px}
+.big{font-family:var(--serif);font-size:clamp(46px,9vw,120px);line-height:.95;letter-spacing:-.02em;text-decoration:none;display:inline-block;position:relative}
+.big::after{content:"";position:absolute;left:0;right:0;bottom:6px;height:2px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.big:hover::after{transform:scaleX(1)}
+footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-family:var(--mono);font-size:12px;color:var(--muted);border-top:1px solid var(--line);padding:22px 0 40px;margin-top:80px}
+footer a{text-decoration:none}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(18px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none}*{animation:none!important;transition:none!important}}
+
+</style>
+</head>
+<body>
+
+<nav id="nav"><div class="wrap">
+  <a class="mark" href="#top">meetanshi<b>.</b>gaba</a>
+  <div class="links">
+    <a href="#work">work</a><a href="#research">research</a><a href="#cv">cv</a><a class="keep" href="#contact">contact</a>
+    <button id="theme" aria-label="Toggle theme"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/></svg></button>
+  </div>
+</div></nav>
+
+<header class="wrap hero" id="top">
+  <div>
+    <h1 class="rv">Meetanshi<br><em>Gaba</em></h1>
+    <p class="lede rv">I study how monetary policy, credit and inequality play out in India, and I like checking ideas against real data. <span>Sometimes that data is election results, cricket or the pop charts.</span></p>
+    <div class="cta rv">
+      <a class="btn solid" href="#work">See the work ↓</a>
+      <a class="btn" href="mailto:meetanshi01@gmail.com">meetanshi01@gmail.com</a>
+    </div>
+  </div>
+  <figure class="portrait rv">
+    <canvas id="field" aria-label="Interactive particle portrait forming the initials MG"></canvas>
+  </figure>
+</header>
+
+
+<section id="work" class="wrap">
+  <div class="head rv">
+    <h2>Selected work<sup>08</sup></h2>
+    <div class="filters" id="filters">
+      <button class="on" data-f="all">all</button>
+      <button data-f="macro">macro & finance</button>
+      <button data-f="india">india</button>
+      <button data-f="culture">culture</button>
+      <button data-f="ml">ml</button>
+    </div>
+  </div>
+  <ul class="proj" id="proj"></ul>
+  <p class="note rv" style="margin-top:18px">Each project reruns itself every month on GitHub Actions, so the numbers stay up to date.</p>
+</section>
+
+<section id="research" class="wrap">
+  <div class="head rv"><h2>Research<sup>05</sup></h2><span class="note">working papers and coursework research</span></div>
+  <div class="papers" id="papers"></div>
+</section>
+
+<section id="cv" class="wrap">
+  <div class="head rv"><h2>CV</h2><span class="note">education · experience · internships · leadership · certifications</span></div>
+  <div id="cvblocks"></div>
+  <div class="cvblock rv"><h3>Skills</h3><div class="skills" id="skills"></div></div>
+</section>
+
+<section id="contact" class="wrap contact">
+  <p class="eyebrow rv"><span class="dot"></span>Open to research, policy and analytics roles</p>
+  <a class="big rv" href="mailto:meetanshi01@gmail.com">Get in touch →</a>
+  <footer>
+    <span>© <span id="yr"></span> Meetanshi Gaba · Chandigarh / Pune</span>
+    <span><a id="ghlink" href="https://github.com" target="_blank" rel="noopener">github</a> · <a href="mailto:meetanshi01@gmail.com">email</a></span>
+  </footer>
+</section>
+
+<script>
+/* ---------- GitHub username: auto-detected on <user>.github.io, or set it here ---------- */
+const GH_USER = location.hostname.endsWith("github.io") ? location.hostname.split(".")[0] : "";
+const repo = r => GH_USER ? `https://github.com/${GH_USER}/${r}` : `#`;
+document.getElementById("ghlink").href = GH_USER ? `https://github.com/${GH_USER}` : "https://github.com";
+
+const PROJECTS = [
+  {r:"caste-monetary-transmission", t:"Caste and Monetary Transmission", tags:["india","macro"], tl:"continuous DiD · panel",
+   q:"Does exclusion from formal credit change how RBI rate changes reach Indian states? This repo reproduces my paper and puts it through extra checks.",
+   f:"The main estimate reproduces exactly (<b>−0.0227</b> across 34 states, 2011 to 2025). It holds up under a wild cluster bootstrap (p = 0.007), random reshuffling of SC/ST shares (p = 0.03) and dropping any single state. The wasted multiplier comes to 0.81 pp, with a 95% interval of 0.34 to 1.26.",
+   m:"RBI · Census 2011 · two-way fixed effects · wild cluster bootstrap · randomisation inference", real:true, s:[7,6,6,5,5,4,4,3,3,2]},
+  {r:"burgernomics", t:"Burgernomics", tags:["macro","ml"], tl:"FX · PPP · forecasting",
+   q:"Can the Big Mac Index tell us where exchange rates are heading?",
+   f:"When a currency looks cheap in burger terms, the gap does close over time, but it closes because local burger prices rise. The currency itself usually keeps weakening. None of the forecasting models, gradient boosting included, did better than simply assuming <b>no change</b>.",
+   m:"The Economist's Big Mac data · panel regressions · real-time forecasting comparison", real:true, s:[3,5,4,6,5,7,6,8,7,9]},
+  {r:"anti-incumbency-india", t:"Do Indian Voters Punish Incumbents?", tags:["india"], tl:"regression discontinuity",
+   q:"Does holding a state assembly seat help or hurt a party at the next election? Evidence from 60 years of close contests.",
+   f:"A party that narrowly wins a seat is about <b>11 points less likely</b> to hold it next time than a party that narrowly lost. The result is stable across bandwidths and passes a placebo test. Individual candidates don't seem to carry the same penalty.",
+   m:"Election Commission results via DataMeet · local linear RD · placebo and bandwidth checks", real:true, s:[5,5,6,6,7,3,3,4,4,5]},
+  {r:"fed-behind-the-curve", t:"How Late Was the Fed?", tags:["macro","ml"], tl:"monetary policy rules",
+   q:"How far behind was the Fed in 2021 and 2022? Five benchmarks, one of them a machine learning model of how the Fed behaved before 2020.",
+   f:"Judged by its own pre-2020 behaviour, the Fed started raising rates <b>about three quarters late</b> and kept them roughly 2.4 points too low through 2021 and 2022. Textbook Taylor rules put the gap closer to 7 points, but they assume the Fed moves in one jump and rely on output gap estimates nobody had at the time.",
+   m:"FRED · estimated reaction function · Taylor rules · gradient boosting", real:true, s:[2,2,2,2,2,2,3,6,8,8]},
+  {r:"hit-half-life", t:"The Half-Life of a Hit", tags:["culture","ml"], tl:"survival analysis · music",
+   q:"Are songs burning out faster in the streaming era? Sixty-five years of the Billboard Hot 100, treated as a survival problem.",
+   f:"The Top 40 has split in two. In the streaming era <b>37% of entries last a single week</b>, compared with 3% before 1991, yet one in five stays for 20 weeks or more. Most Top 10 hits now debut in the Top 10, and a song's first week tells you about half of how long it will last.",
+   m:"Kaplan-Meier · Cox proportional hazards · gradient boosting", real:true, s:[9,8,8,7,5,3,2,2,3,5]},
+  {r:"ipl-hot-hand", t:"Is There a Hot Hand in the IPL?", tags:["india","ml"], tl:"behavioural · sport",
+   q:"After a boundary, is the next ball really more likely to go for four? Every IPL ball since 2008.",
+   f:"In the raw data, a boundary is followed by another 3.6 points more often than usual. Once you account for who is batting, who is bowling and the stage of the innings, that drops to about 1 point, and what's left comes from the <b>bowler</b>. After conceding a boundary, bowlers give away another 1.5 points more often. Adding streaks to a prediction model doesn't improve it.",
+   m:"Cricsheet · 285,000 balls · linear probability models · gradient boosting", real:true, s:[4,7,3,8,2,6,5,9,4,6]},
+  {r:"hosting-dividend", t:"The Hosting Dividend", tags:["macro","ml"], tl:"synthetic control · WDI",
+   q:"Do the Olympics, the World Cup or the Delhi Commonwealth Games leave the host economy better off?",
+   f:"Across 11 hosts, <b>no event stands out</b> against placebo countries. The one borderline case, South Africa in 2010, points the wrong way. China looks like a big winner, but that is its overall growth, not the Olympics. Delhi 2010 comes out at +8%, well within the noise.",
+   m:"World Bank WDI · synthetic control · generalised synthetic control · placebo tests", real:true, s:[4,4,5,5,6,6,6,6,7,7]},
+  {r:"say-sound-gap", t:"The Say-Sound Gap", tags:["culture","ml"], tl:"audio · NLP · clustering",
+   q:"Do hit songs sound happier than their lyrics? Audio mood against lyric sentiment, from 1959 to now.",
+   f:"Each song's sound is scored from a 30-second preview using its mode, tempo and brightness, and its lyrics are scored for sentiment. Themes in the lyrics are found without a preset list of emotions, using sentence embeddings, UMAP and HDBSCAN. The last step checks whether the gap moves with the economy.",
+   m:"iTunes previews · LRCLIB (lyrics are never stored) · librosa · sentence-transformers · FRED", real:false, s:[4,6,3,7,4,6,5,8,4,6]},
+];
+
+const PAPERS = [
+  {y:"Working paper", t:"Heterogeneous Monetary Policy Transmission in Segmented Credit Markets: The Role of Caste in India",
+   p:"A 34-state panel from 2011 to 2025 testing whether caste-linked financial exclusion weakens how RBI repo rate changes pass through to credit. It introduces a 'wasted multiplier' of about 0.81 pp at the average SC/ST share, drawing on TANK and HANK models.",
+   m:"Python · two-way FE · Newey-West HAC"},
+  {y:"Working paper", t:"Inequality and the Multiplier: Post-Keynesian Lessons for Fiscal Policy in India",
+   p:"Does rising inequality, measured by the Palma ratio, weaken fiscal multipliers in India? Annual data from 1990 to 2023, read through Kaldor-Pasinetti and Hein-Stockhammer distribution theory.",
+   m:"OLS · interaction modelling · Stata · R"},
+  {y:"Working paper", t:"Trial, Trust, and Subscription: Learning and Risk in India's Streaming Market",
+   p:"A survey of 150 Gen Z streaming users, combining expected utility, Bayesian learning and CARA risk aversion. Trial length and perceived quality turn out to drive willingness to pay.",
+   m:"Logit · Bayesian simulation · Python · Stata"},
+  {y:"BA (Hons.) dissertation · 2023", t:"The Market Positioning of Tata Motors: Consumer Behaviour and Choice",
+   p:"A survey of 167 buyers looking at what drives preference and brand switching across Tata's vehicle segments.",
+   m:"ANOVA · regression · survey design"},
+  {y:"BA (Hons.) seminar paper · 2022", t:"Trans-Inclusive Advertising and the Lived Experience of Transgender Individuals in India",
+   p:"Fifteen interviews and more than 100 surveys on how trans-inclusive advertising shapes self-perception, and on the gap between being visible in ads and any real change in people's lives.",
+   m:"Mixed methods · thematic analysis"},
+];
+
+const CV = [
+  {h:"Education", rows:[
+    ["2025 – 2027","<strong>MSc Economics (Data Analytics)</strong><div class='where'>Symbiosis School of Economics, Pune</div>"],
+    ["2019 – 2023","<strong>BA (Hons.) Liberal Arts</strong><div class='where'>Symbiosis School for Liberal Arts, Pune · Business Studies; Economics & Media</div>"],
+  ]},
+  {h:"Experience", rows:[
+    ["Jan 2024 – now","<strong>Freelance Marketing Consultant</strong> · Remote<div class='where'>Independent work with restaurants, cafés and NGOs: copywriting, target-audience analysis, and survey design and execution.</div>"],
+    ["Dec 2023 – Feb 2025","<strong>Marketing Officer</strong> (Content Strategy, Analytics & Database Management) · Kaizen Pharmaceuticals, Chandigarh<div class='where'>Competitive-intelligence reports across 30+ SKUs; pricing and consumer-trend analysis; proposal writing and compliance documentation.</div><div class='meta'>Full-time · hybrid</div>"],
+    ["Jun – Dec 2023","<strong>Marketing Associate</strong> · Garuda Insurance Brokers, Gurugram<div class='where'>Market and client research on engagement and retention across service and digital sectors; media relations and email marketing.</div><div class='meta'>Full-time · on-site</div>"],
+  ]},
+  {h:"Internships", rows:[
+    ["May – Aug 2026","<strong>Market Research Intern</strong> · HKRP Innovations<div class='where'>Market information (direct marketing) and business research.</div><div class='meta'>Part-time</div>"],
+    ["Jul – Aug 2022","<strong>Trainee</strong> · EY India<div class='where'>Research on global macro, industry and regulatory trends; structured internal reports and digital content.</div><div class='meta'>Hybrid</div>"],
+    ["Jun – Jul 2022","<strong>Marketing & Business Development Intern</strong> · DLF Home Developers, Chandigarh<div class='where'>Client acquisition, database maintenance, field visits and business proposals.</div>"],
+    ["Nov 2021 – Jun 2022","<strong>Social Media Marketing Analyst Intern</strong> · Embtel Solutions<div class='where'>Social media analytics and content.</div><div class='meta'>Remote</div>"],
+  ]},
+  {h:"Leadership & volunteering", rows:[
+    ["2020 – 2023","<strong>Student Head & Chief Editor</strong> · Queer Qrew + Zeitgayst, SSLA"],
+    ["2020 – 2022","<strong>Marketing Head</strong> · Events Team & Business Development Cell, SSLA"],
+    ["Volunteering","NSS (2017–19) · GWP Charitable Fund (2021–22) · Open Eyes Foundation (2023)"],
+  ]},
+  {h:"Certifications", n:9, rows:[
+    ["Data science","<a href='https://www.coursera.org/learn/python-data-analysis' target='_blank' rel='noopener'>Introduction to Data Science in Python</a>, University of Michigan<br><a href='https://www.coursera.org/learn/python-text-mining' target='_blank' rel='noopener'>Applied Text Mining in Python</a>, University of Michigan<br><a href='https://www.coursera.org/specializations/microsoft-big-data-management-and-analytics' target='_blank' rel='noopener'>Big Data Management and Analytics</a>, Microsoft<br>SQL for Data Science, UC Davis"],
+    ["Marketing analytics","Meta Marketing Analytics, Meta<br><a href='https://www.coursera.org/learn/social-media-data-analytics' target='_blank' rel='noopener'>Social Media Data Analytics</a>, University of Washington<br>Market Research Methods & Data Analysis Specialisation"],
+    ["Behaviour & decisions","<a href='https://www.coursera.org/specializations/the-science-of-mind-and-decision-making' target='_blank' rel='noopener'>The Science of Mind and Decision Making</a><br>Marketing Psychology and Neuromarketing"],
+  ]},
+];
+
+const SKILLS = [
+  ["Econometrics","OLS / WLS / 2SLS · panel FE / RE / GMM · regression discontinuity · synthetic control · survival models · logit / probit · MLE · time series · HAC"],
+  ["Machine learning","gradient boosting · random forests · ridge / lasso · UMAP · HDBSCAN · sentence embeddings · out-of-sample evaluation"],
+  ["Programming","Python (pandas, numpy, statsmodels, scikit-learn, librosa) · Stata · R · SQL · SPSS · GAMS · GitHub Actions"],
+  ["Research","survey design · mixed methods · systematic literature review · qualitative interviewing · thematic analysis"],
+  ["Visualisation","matplotlib · ggplot2 · Power BI · Stata graphs · Excel"],
+];
+
+/* ---------- render ---------- */
+const spark = s => { const w=120,h=40,mn=Math.min(...s),mx=Math.max(...s);
+  const pts=s.map((v,i)=>`${(i/(s.length-1))*w},${h-4-((v-mn)/(mx-mn||1))*(h-8)}`).join(" ");
+  return `<svg class="spark" viewBox="0 0 ${w} ${h}" aria-hidden="true"><polyline points="${pts}" fill="none" stroke="var(--accent)" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/></svg>`; };
+const P = document.getElementById("proj");
+PROJECTS.forEach((p,i)=>{
+  const li=document.createElement("li"); li.className="rv"; li.dataset.tags=p.tags.join(" ");
+  li.innerHTML=`<div class="row" role="button" tabindex="0" aria-expanded="false">
+      <span class="n">${String(i+1).padStart(2,"0")}</span>
+      <div><h3>${p.t}<span class="live ${p.real?"real":""}">${p.real?"results in":"running"}</span></h3><p class="q">${p.q}</p></div>
+      <span class="tags">${p.tl}</span><span class="arr">→</span>${spark(p.s)}</div>
+    <div class="finding"><span></span><div class="body"><span class="k">${p.real?"FINDING":"APPROACH"}</span>${p.f}
+      <div class="m">${p.m}</div><a class="gh" href="${repo(p.r)}" target="_blank" rel="noopener">view repo: ${p.r} ↗</a></div></div>`;
+  const row=li.querySelector(".row");
+  const toggle=()=>{li.classList.toggle("open");row.setAttribute("aria-expanded",li.classList.contains("open"))};
+  row.addEventListener("click",toggle); row.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();toggle()}});
+  P.appendChild(li);
+});
+document.getElementById("filters").addEventListener("click",e=>{
+  const b=e.target.closest("button"); if(!b) return;
+  document.querySelectorAll("#filters button").forEach(x=>x.classList.toggle("on",x===b));
+  document.querySelectorAll("#proj li").forEach(li=>li.classList.toggle("hide",b.dataset.f!=="all"&&!li.dataset.tags.includes(b.dataset.f)));
+});
+document.getElementById("papers").innerHTML = PAPERS.map(p=>`<article class="paper rv"><span class="yr">${p.y}</span><h4>${p.t}</h4><p>${p.p}</p><span class="meth">${p.m}</span></article>`).join("");
+document.getElementById("cvblocks").innerHTML = CV.map(sec=>`<div class="cvblock rv"><h3>${sec.h} <span class="ct">${String(sec.n||sec.rows.length).padStart(2,"0")}</span></h3><dl class="cv">${sec.rows.map(([a,b])=>`<dt>${a}</dt><dd>${b}</dd>`).join("")}</dl></div>`).join("");
+document.getElementById("skills").innerHTML = SKILLS.map(([a,b])=>`<div><h5>${a}</h5><p>${b}</p></div>`).join("");
+document.getElementById("yr").textContent = new Date().getFullYear();
+
+/* ---------- theme ---------- */
+const root=document.documentElement;
+try{const s=localStorage.getItem("theme"); if(s) root.dataset.theme=s;}catch(e){}
+document.getElementById("theme").onclick=()=>{
+  const dark = root.dataset.theme ? root.dataset.theme==="dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+  root.dataset.theme = dark ? "light" : "dark"; try{localStorage.setItem("theme",root.dataset.theme)}catch(e){}
+};
+
+/* ---------- nav + reveal ---------- */
+addEventListener("scroll",()=>document.getElementById("nav").classList.toggle("scrolled",scrollY>10),{passive:true});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll(".rv").forEach((el,i)=>{el.style.transitionDelay=(i%6)*60+"ms";io.observe(el)});
+
+/* ---------- the portrait: particles that assemble into initials, scatter under the cursor ---------- */
+(()=>{
+  const c=document.getElementById("field"), ctx=c.getContext("2d");
+  const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let W,H,DPR,pts=[],mouse={x:-1e4,y:-1e4},t0=performance.now();
+  const color=()=>getComputedStyle(root).getPropertyValue("--ink").trim(), accent=()=>getComputedStyle(root).getPropertyValue("--accent").trim();
+  function targets(){
+    const o=document.createElement("canvas"); o.width=W; o.height=H; const g=o.getContext("2d");
+    g.fillStyle="#000"; g.textAlign="center"; g.textBaseline="middle";
+    g.font=`italic ${Math.floor(W*.62)}px "Instrument Serif", Georgia, serif`;
+    g.fillText("mg", W/2, H*.46);
+    const d=g.getImageData(0,0,W,H).data, out=[], step=Math.max(4,Math.floor(W/95));
+    for(let y=0;y<H;y+=step) for(let x=0;x<W;x+=step) if(d[(y*W+x)*4+3]>128) out.push([x,y]);
+    return out;
+  }
+  function init(){
+    const r=c.getBoundingClientRect(); DPR=Math.min(2,devicePixelRatio||1);
+    W=Math.floor(r.width); H=Math.floor(r.height); c.width=W*DPR; c.height=H*DPR; ctx.setTransform(DPR,0,0,DPR,0,0);
+    const tg=targets(); const n=Math.min(2000,tg.length+400);
+    pts=Array.from({length:n},(_,i)=>{const tt=tg[i]; return {x:Math.random()*W,y:Math.random()*H,vx:0,vy:0,
+      tx:tt?tt[0]:null,ty:tt?tt[1]:null,ph:Math.random()*6.28,hot:Math.random()<.06}});
+  }
+  function frame(now){
+    const t=(now-t0)/1000, ink=color(), acc=accent();
+    ctx.clearRect(0,0,W,H);
+    for(const p of pts){
+      let ax,ay;
+      if(p.tx!==null){ ax=(p.tx-p.x)*.018; ay=(p.ty-p.y)*.018; }
+      else { // free particles orbit the frame like noise in a scatter plot
+        ax=Math.cos(t*.3+p.ph+p.y*.01)*.06; ay=Math.sin(t*.25+p.ph+p.x*.01)*.06;
+        if(p.x<0)p.x=W; if(p.x>W)p.x=0; if(p.y<0)p.y=H; if(p.y>H)p.y=0; }
+      const dx=p.x-mouse.x, dy=p.y-mouse.y, d2=dx*dx+dy*dy, R=W*.16;
+      if(d2<R*R){const f=(1-Math.sqrt(d2)/R)*2.4; const d=Math.sqrt(d2)||1; ax+=dx/d*f; ay+=dy/d*f;}
+      p.vx=(p.vx+ax)*.86; p.vy=(p.vy+ay)*.86; p.x+=p.vx; p.y+=p.vy;
+      const s=p.tx!==null?1.5:1;
+      ctx.fillStyle=p.hot?acc:ink; ctx.globalAlpha=p.tx!==null?.9:.28;
+      ctx.fillRect(p.x+Math.sin(t*1.3+p.ph)*.4,p.y+Math.cos(t*1.1+p.ph)*.4,s,s);
+    }
+    ctx.globalAlpha=1;
+    if(!reduce) requestAnimationFrame(frame);
+  }
+  c.addEventListener("pointermove",e=>{const r=c.getBoundingClientRect(); mouse.x=e.clientX-r.left; mouse.y=e.clientY-r.top;});
+  c.addEventListener("pointerleave",()=>{mouse.x=mouse.y=-1e4});
+  c.addEventListener("click",()=>pts.forEach(p=>{p.vx+=(Math.random()-.5)*40;p.vy+=(Math.random()-.5)*40}));
+  const start=()=>{init(); if(reduce){pts.forEach(p=>{if(p.tx!==null){p.x=p.tx;p.y=p.ty}}); frame(performance.now());} else requestAnimationFrame(frame);};
+  (document.fonts?document.fonts.ready:Promise.resolve()).then(start);
+  let to; addEventListener("resize",()=>{clearTimeout(to);to=setTimeout(init,200)});
+})();
+</script>
+</body>
+</html>
