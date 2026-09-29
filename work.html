@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Work · Meetanshi Gaba</title>
+<meta name="description" content="Eight data projects by Meetanshi Gaba, with interactive charts.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="work">
+<main class="wrap">
+  <header class="phead"><span class="kicker rv">Work</span><h1 class="page-title rv">Eight questions, <em>real data</em></h1>
+  <p class="rv">Each project is public on GitHub and reruns itself every month, so the numbers come from the latest data. Every chart is interactive: drag the sliders, hover the points, and open "The detail" for the full result.</p></header>
+  <div class="filters rv" id="filters"><button class="on" data-f="all">All</button><button data-f="india">India</button><button data-f="macro">Macro and finance</button><button data-f="culture">Culture</button><button data-f="ml">Machine learning</button></div>
+  <div id="projects"></div>
+</main>
+<div id="foot"></div>
+<script src="data.js"></script>
+<script src="cvdata.js"></script>
+<script src="site.js"></script>
+</body>
+</html>
